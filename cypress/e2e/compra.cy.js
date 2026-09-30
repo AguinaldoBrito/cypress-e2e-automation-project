@@ -7,7 +7,6 @@ describe('Compra', () => {
 
   beforeEach(() => {
     cy.login()
-    cy.visit('/inventory.html')
   })
 
   it('efetua uma compra de produto', () => {
