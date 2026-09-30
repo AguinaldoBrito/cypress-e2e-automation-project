@@ -30,6 +30,8 @@ e relatório HTML publicado no GitHub Pages.
 - Remover produto do carrinho
 - Validação de campo obrigatório no checkout
 
+> As credenciais em `cypress/fixtures/usuarios.json` são as contas públicas de demonstração do Sauce Demo, sem dados reais.
+
 ## Estrutura do projeto
 
 ```
@@ -46,12 +48,14 @@ cypress-e2e-automation-project/
 │   └── support/
 │       ├── commands.js          # comandos customizados (cy.login)
 │       └── e2e.js
+├── docs/
+│   └── report.png               # print do relatório (usado no README)
 ├── cypress.config.js            # configuração do Cypress e do reporter
 ├── package.json
 └── README.md
 ```
 
-O comando customizado cy.login() faz o login pela interface e deixa o teste já na página de produtos, pronto para o cenário seguinte.
+O comando customizado `cy.login()` faz o login pela interface e deixa o teste já na página de produtos, pronto para o cenário seguinte.
 
 ## Pré-requisitos
 
