@@ -1,25 +1,18 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
+// Login reutilizável. Usa cy.session para fazer o login uma única vez
+// e reaproveitar a sessão nos testes seguintes (mais rápido e estável).
 //
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+// Uso: cy.login()            -> usuário padrão
+//      cy.login('bloqueado') -> qualquer chave de cypress/fixtures/usuarios.json
+Cypress.Commands.add('login', (tipo = 'padrao') => {
+  cy.fixture('usuarios').then((usuarios) => {
+    const { username, password } = usuarios[tipo]
+
+    cy.session(['saucedemo', tipo], () => {
+      cy.visit('/')
+      cy.get('[data-test="username"]').type(username)
+      cy.get('[data-test="password"]').type(password, { log: false })
+      cy.get('[data-test="login-button"]').click()
+      cy.url().should('include', '/inventory.html')
+    })
+  })
+})

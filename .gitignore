@@ -2,8 +2,10 @@ node_modules
 
 cypress/videos
 cypress/screenshots
+cypress/downloads
 
 mochawesome-report
-index.json
+mochawesome-merged.json
+report
 
 .DS_Store

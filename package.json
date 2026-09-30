@@ -1,25 +1,27 @@
 {
-  "name": "Agilizei02",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "cypress-e2e-automation-project",
+  "version": "2.0.0",
+  "description": "Testes E2E com Cypress no Sauce Demo, com pipeline CI/CD no GitHub Actions",
+  "private": true,
   "scripts": {
-    "cy:open": "npx cypress open",
-    "cy:run": "npx cypress run",
-    "report:merge": "mochawesome-merge > index.json",
-    "report:mocha": "marge index.json",
-    "report:clean": "rimraf mochawesome-report index.json"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "report:clean": "rimraf mochawesome-report mochawesome-merged.json report",
+    "report:merge": "mochawesome-merge \"mochawesome-report/*.json\" > mochawesome-merged.json",
+    "report:html": "marge mochawesome-merged.json -f index -o report --inline",
+    "report": "npm run report:merge && npm run report:html",
+    "test": "npm run report:clean && cypress run",
+    "test:report": "npm run test || echo Testes com falha - gerando relatorio && npm run report"
   },
-  "keywords": [],
-  "author": "",
+  "engines": {
+    "node": ">=20"
+  },
   "license": "ISC",
   "devDependencies": {
-    "cypress": "5.6.0",
-    "cypress-multi-reporters": "^1.4.0",
-    "mocha": "^8.2.1",
-    "mochawesome": "^6.2.1",
-    "mochawesome-merge": "^4.2.0",
-    "mochawesome-report-generator": "^5.1.0",
-    "rimraf": "^3.0.2"
+    "cypress": "^15.21.1",
+    "mochawesome": "^8.1.1",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2",
+    "rimraf": "^6.1.3"
   }
 }
