@@ -49,8 +49,7 @@ cypress-e2e-automation-project/
 └── README.md
 ```
 
-O comando customizado `cy.login()` usa `cy.session` para autenticar uma vez e
-reaproveitar a sessão nos testes seguintes.
+O comando customizado cy.login() faz o login pela interface e deixa o teste já na página de produtos, pronto para o cenário seguinte.
 
 ## Pré-requisitos
 
