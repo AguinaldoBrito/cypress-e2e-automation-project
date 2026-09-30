@@ -8,7 +8,7 @@ e relatório HTML publicado no GitHub Pages.
 
 📊 **Relatório da última execução:** https://aguinaldobrito.github.io/cypress-e2e-automation-project/
 
-![Relatório Cypress](docs/report.png).
+![Relatório Cypress](docs/report.png)
 
 ## Tecnologias
 
